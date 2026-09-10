@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Студенти групи</h1>
+
+  <p class="counter">Всього студентів: {{ students.length }}</p>
+
+  <div
+    class="student-card"
+    *ngFor="let student of students; let i = index"
+    [ngClass]="getGradeClass(student.grade)"
+  >
+    <h3>{{ student.name }}</h3>
+    <p>Вік: {{ student.age }}</p>
+    <p>Середня оцінка: {{ student.grade }}</p>
+
+    <p *ngIf="student.grade !== null && student.grade >= 10" class="excellent">
+      Відмінний результат
+    </p>
+
+    <button (click)="removeStudent(i)" class="btn-delete">Видалити</button>
+  </div>
+
+  <hr>
+
+  <h2>Додати нового студента</h2>
+  <div class="form">
+    <input type="text" placeholder="Ім'я" [(ngModel)]="newName">
+    <input type="number" placeholder="Вік" [(ngModel)]="newAge">
+    <input type="number" placeholder="Середня оцінка" [(ngModel)]="newGrade">
+
+    <button (click)="addStudent()" [disabled]="isAddDisabled">
+      Додати студента
+    </button>
+  </div>
+</div>
