@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-interface Student {
-  name: string;
-  age: number | null;
-  grade: number | null;
-}
+import { StudentService } from '../services/student'
 
 @Component({
   selector: 'app-students',
@@ -16,11 +11,14 @@ interface Student {
   styleUrl: './students.css'
 })
 export class Students {
-  students: Student[] = [
-    { name: 'Анна', age: 18, grade: 11 },
-    { name: 'Максим', age: 17, grade: 7 },
-    { name: 'Олег', age: 18, grade: 5 }
-  ];
+
+  // Dependency Injection — сервіс підключається сюди, БЕЗ "new"
+  constructor(private studentService: StudentService) {}
+
+  // геттер, щоб у HTML можна було просто писати students
+  get students() {
+    return this.studentService.getStudents()();
+  }
 
   newName: string = '';
   newAge: number | null = null;
@@ -34,11 +32,13 @@ export class Students {
     if (this.isAddDisabled) {
       return;
     }
-    this.students.push({
-      name: this.newName.trim(),
-      age: this.newAge,
-      grade: this.newGrade
-    });
+
+    this.studentService.addStudent(
+      this.newName.trim(),
+      this.newAge ?? 0,
+      this.newGrade ?? 0
+    );
+
     this.clearForm();
   }
 
@@ -48,8 +48,8 @@ export class Students {
     this.newGrade = null;
   }
 
-  removeStudent(index: number): void {
-    this.students.splice(index, 1);
+  removeStudent(id: number): void {
+    this.studentService.removeStudent(id);
   }
 
   getGradeClass(grade: number | null): string {

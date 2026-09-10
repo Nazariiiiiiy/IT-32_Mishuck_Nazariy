@@ -5,7 +5,7 @@
 
   <div
     class="student-card"
-    *ngFor="let student of students; let i = index"
+    *ngFor="let student of students"
     [ngClass]="getGradeClass(student.grade)"
   >
     <h3>{{ student.name }}</h3>
@@ -16,7 +16,7 @@
       Відмінний результат
     </p>
 
-    <button (click)="removeStudent(i)" class="btn-delete">Видалити</button>
+    <button (click)="removeStudent(student.id)" class="btn-delete">Видалити</button>
   </div>
 
   <hr>
