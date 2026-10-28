@@ -1,0 +1,189 @@
+.page {
+  min-height: 100vh;
+  background: #0b0f19;
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  padding: 48px 16px;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.total {
+  margin: 0 0 28px;
+  color: #9ca3af;
+}
+
+.total strong {
+  color: #a5b4fc;
+}
+
+/* Панель керування */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
+
+.select {
+  background: #0b0f19;
+  color: #f3f4f6;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 1px;
+}
+
+.counter {
+  background: #1e1b4b;
+  color: #c7d2fe;
+  border: 1px solid #4338ca;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Список курсів */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 16px 18px;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+
+.card:hover {
+  border-color: #374151;
+  transform: translateY(-1px);
+}
+
+.cardSelected {
+  border-color: #6366f1;
+  background: #161a35;
+}
+
+.courseTitle {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: capitalize;
+}
+
+.beginner {
+  background: #052e1c;
+  color: #6ee7b7;
+  border: 1px solid #047857;
+}
+
+.intermediate {
+  background: #2e2305;
+  color: #fcd34d;
+  border: 1px solid #b45309;
+}
+
+/* Кнопка «Обрати» */
+.button {
+  flex-shrink: 0;
+  background: #6366f1;
+  color: #ffffff;
+  border: 1px solid #6366f1;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.button:hover {
+  background: #4f46e5;
+}
+
+.buttonSelected {
+  background: transparent;
+  color: #a5b4fc;
+}
+
+.buttonSelected:hover {
+  background: #1e1b4b;
+}
+
+/* Порожній результат */
+.empty {
+  text-align: center;
+  padding: 32px 16px;
+  background: #111827;
+  border: 1px dashed #374151;
+  border-radius: 12px;
+  color: #9ca3af;
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
