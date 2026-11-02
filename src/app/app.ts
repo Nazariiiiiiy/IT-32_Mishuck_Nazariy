@@ -1,12 +1,20 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
-  templateUrl: './app.html',
+  standalone: true,
+  imports: [RouterOutlet, RouterLink],
+  template: `
+    <nav>
+      <a routerLink="/">Головна</a> |
+      <a routerLink="/books">Книги</a> |
+      <a routerLink="/books/add">Додати книгу</a>
+    </nav>
+
+    <hr>
+
+    <router-outlet></router-outlet>
+  `
 })
-export class App {
-  protected readonly title = signal('library-app');
-}
+export class AppComponent {}
