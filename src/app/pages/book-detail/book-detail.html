@@ -1,0 +1,11 @@
+<div *ngIf="book">
+  <h2>{{ book.title }}</h2>
+  <p><b>Автор:</b> {{ book.author }}</p>
+  <p><b>Опис:</b> {{ book.description }}</p>
+</div>
+
+<div *ngIf="!book">
+  <h2>Книгу не знайдено</h2>
+</div>
+
+<a routerLink="/books">← Назад до списку</a>

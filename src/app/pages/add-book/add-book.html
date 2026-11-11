@@ -1,0 +1,57 @@
+<h2>Додати книгу</h2>
+
+<form #bookForm="ngForm" (ngSubmit)="addBook(bookForm)" novalidate>
+
+  <div>
+    <label>Назва книги:</label><br>
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="title"
+      #titleRef="ngModel"
+      required
+      minlength="2"
+      maxlength="50">
+    <div *ngIf="submitted && titleRef.invalid">
+      <small *ngIf="titleRef.errors?.['required']">Поле обов'язкове</small>
+      <small *ngIf="titleRef.errors?.['minlength']">Введено недостатньо символів (мінімум 2)</small>
+      <small *ngIf="titleRef.errors?.['maxlength']">Забагато символів (максимум 50)</small>
+    </div>
+  </div>
+
+
+  <div>
+    <label>Автор:</label><br>
+    <input
+      type="text"
+      name="author"
+      [(ngModel)]="author"
+      #authorRef="ngModel"
+      required
+      minlength="3"
+      maxlength="50">
+    <div *ngIf="submitted && authorRef.invalid">
+      <small *ngIf="authorRef.errors?.['required']">Поле обов'язкове</small>
+      <small *ngIf="authorRef.errors?.['minlength']">Введено недостатньо символів (мінімум 3)</small>
+      <small *ngIf="authorRef.errors?.['maxlength']">Забагато символів (максимум 50)</small>
+    </div>
+  </div>
+
+
+  <div>
+    <label>Опис:</label><br>
+    <textarea
+      name="description"
+      [(ngModel)]="description"
+      #descriptionRef="ngModel"
+      required
+      minlength="10"></textarea>
+    <div *ngIf="submitted && descriptionRef.invalid">
+      <small *ngIf="descriptionRef.errors?.['required']">Поле обов'язкове</small>
+      <small *ngIf="descriptionRef.errors?.['minlength']">Введено недостатньо символів (мінімум 10)</small>
+    </div>
+  </div>
+
+  <br>
+  <button type="submit">Додати</button>
+</form>
